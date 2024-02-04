@@ -6,12 +6,14 @@
 /*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:11:04 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/02 12:17:10 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/02 14:36:44 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 #define MAX_INT_LEN 10
+#define INT_MAX 2147483647
+#define INT_MIN 2147483648
 
 static int	is_white(int c)
 {
@@ -30,10 +32,10 @@ static int	check_int_overflow(char *nbr, int signe)
 	if (ft_strlen(nbr) == MAX_INT_LEN)
 	{
 		if (signe > 0)
-			if (ft_strncmp(nbr, "2147483647", MAX_INT_LEN) <= 0)
+			if (ft_strncmp(nbr, INT_MAX, MAX_INT_LEN) <= 0)
 				return (0);
 		if (signe < 0)
-			if (ft_strncmp(nbr, "2147483648", MAX_INT_LEN) <= 0)
+			if (ft_strncmp(nbr, INT_MIN, MAX_INT_LEN) <= 0)
 				return (0);
 	}
 	return (1);
