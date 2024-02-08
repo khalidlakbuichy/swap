@@ -6,13 +6,13 @@
 /*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:37:35 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/04 12:57:39 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/05 09:53:51 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stack.h"
 
-size_t	ft_stack_size(t_stack *stack)
+int	ft_stack_size(t_stack *stack)
 {
 	return (stack->size);
 }

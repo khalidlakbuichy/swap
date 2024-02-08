@@ -6,14 +6,14 @@
 /*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:11:04 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/02 14:36:44 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/05 09:46:18 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 #define MAX_INT_LEN 10
-#define INT_MAX 2147483647
-#define INT_MIN 2147483648
+#define INT_MAX "2147483647"
+#define INT_MIN "2147483648"
 
 static int	is_white(int c)
 {

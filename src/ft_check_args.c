@@ -6,7 +6,7 @@
 /*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/02 12:19:23 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/05 10:09:35 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,36 @@ static void	ft_print_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	ft_check_args(int ac, char **av)
+void	push_nb_to_stack(t_stack *stack, int nb)
 {
-	int i;
-	int j;
-	int error_flag;
-	char **splited_av;
+	int	*nbr;
+
+	nbr = malloc(sizeof(int));
+	if (nbr == NULL)
+		return ;
+	(*nbr) = nb;
+	ft_stack_push(stack, nbr);
+}
+
+static int	ft_intcmp(void *a, void *b)
+{
+	int	*nb_a;
+	int	*nb_b;
+
+	nb_a = a;
+	nb_b = b;
+	if (*nb_a == *nb_b)
+		return (0);
+	return (1);
+}
+
+void	ft_check_args(int ac, char **av, t_stack *stack_a)
+{
+	int		nb;
+	int		i;
+	int		j;
+	int		error;
+	char	**splited_av;
 
 	i = 1;
 	while (i < ac)
@@ -34,16 +58,17 @@ void	ft_check_args(int ac, char **av)
 		j = 0;
 		if (splited_av[j] == NULL)
 		{
-			/* add this number to the stack */
-			printf("%d\n", ft_atoi_enhanced(av[i], &error_flag));
-			/* if error == 1 print error and free the stack */
-			if (error_flag)
+			nb = ft_atoi_enhanced(av[i], &error);
+			if (ft_lstsearh_item(stack_a->top, &nb, ft_intcmp))
+				ft_print_error();			
+				push_nb_to_stack(stack_a, nb);
+			if (error)
 				ft_print_error();
 		}
 		while (splited_av[j] != NULL)
 		{
-			printf("%d\n", ft_atoi_enhanced(splited_av[j], &error_flag));
-			if (error_flag)
+			push_nb_to_stack(stack_a, ft_atoi_enhanced(splited_av[j], &error));
+			if (error)
 				ft_print_error();
 			j++;
 		}
