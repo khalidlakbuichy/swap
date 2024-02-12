@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "push_swap.h": "c",
-        "ft_data_structres.h": "c"
+        "ft_data_structres.h": "c",
+        "stdbool.h": "c"
     }
 }

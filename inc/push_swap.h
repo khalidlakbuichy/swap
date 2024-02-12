@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:21:56 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/05 10:04:00 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/11 13:28:13 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,16 @@
 int		ft_atoi_enhanced(char *str, int *error_flag);
 void	ft_check_args(int ac, char **av, t_stack *stack_a);
 
-/* Stack operations */
-void	ft_swap(t_stack *stack);
-void	ft_push(t_stack *stack_a, t_stack *stack_b);
-void	ft_rotate(t_stack *stack);
-void	ft_rrotate(t_stack *stack);
+/* operations */
+void	pa(t_stack *b, t_stack *a);
+void	pb(t_stack *a, t_stack *b);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+
 #endif

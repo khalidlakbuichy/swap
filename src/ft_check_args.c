@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/05 10:09:35 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/11 13:32:41 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	ft_check_args(int ac, char **av, t_stack *stack_a)
 		{
 			nb = ft_atoi_enhanced(av[i], &error);
 			if (ft_lstsearh_item(stack_a->top, &nb, ft_intcmp))
-				ft_print_error();			
-				push_nb_to_stack(stack_a, nb);
+				ft_print_error();
+			push_nb_to_stack(stack_a, nb);
 			if (error)
 				ft_print_error();
 		}

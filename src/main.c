@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:42:42 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/05 10:31:30 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/11 15:00:15 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_print(void *data)
 	nb = data;
 	printf("%d\n", *nb);
 }
+
 int	main(int ac, char **av)
 {
 	t_stack *stack_a;
@@ -32,14 +33,5 @@ int	main(int ac, char **av)
 	stack_a = ft_stack_create();
 	stack_b = ft_stack_create();
 	ft_check_args(ac, av, stack_a);
-	ft_lstiter(stack_a->top, ft_print);
-	ft_rotate(stack_a);
-	puts("ra");
-	ft_lstiter(stack_a->top, ft_print);
-	puts("ra");
-	ft_rotate(stack_a);
-	ft_lstiter(stack_a->top, ft_print);
-		puts("ra");
-	ft_rotate(stack_a);
 	ft_lstiter(stack_a->top, ft_print);
 }
