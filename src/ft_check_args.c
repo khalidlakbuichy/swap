@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/12 11:25:01 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:44:58 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,24 @@ static int	ft_intcmp(void *ref, void *data)
 	return (1);
 }
 
+void ft_make_table(t_stack *a)
+{
+	t_element *elm;
+	t_list *head = a->top;
+	
+	int *tab = (int *) malloc(sizeof(int) * (a->size + 1));
+	for (int i = 0; (i < a->size) && head != NULL; i++)
+	{
+		elm = head->content;
+		tab[i] = elm->nb;
+		head = head->next;
+	}
+	for (int i = 0; (i < a->size); i++)
+	{
+		printf("i: %d\n", tab[i]);
+	}
+}
+
 void	ft_check_args(int ac, char **av, t_stack *stack_a)
 {
 	int		nb;
@@ -78,4 +96,5 @@ void	ft_check_args(int ac, char **av, t_stack *stack_a)
 		}
 		i++;
 	}
+	ft_make_table(stack_a);
 }

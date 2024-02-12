@@ -6,7 +6,7 @@
 #    By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/11 12:59:23 by klakbuic          #+#    #+#              #
-#    Updated: 2024/02/12 11:30:48 by klakbuic         ###   ########.fr        #
+#    Updated: 2024/02/12 13:13:51 by klakbuic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS   = -Wall -Wextra -Werror -fsanitize=address
 LIB      = libs/libft/libft.a libs/ft_containers/containersft.a
 
 SRCS     = src/ft_atoi_enhanced.c src/ft_check_args.c src/ft_push.c src/ft_rorate.c \
-           src/ft_rrotate.c src/ft_swap.c src/main.c
+           src/ft_rrotate.c src/ft_swap.c src/main.c src/ft_sort.c src/ft_qsort.c
 
 SRCS_B   = 
 
@@ -68,5 +68,5 @@ re_bonus: fclean_bonus bonus
 COMMENT := "automtic push"
 push:
 	git add .
-	git commit -m"$(COMMENT)"
+	git commit -m "$(COMMENT)"
 	git push
