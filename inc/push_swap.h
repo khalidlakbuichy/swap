@@ -6,18 +6,12 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:21:56 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/12 13:12:55 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:13:09 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-typedef struct s_element
-{
-	int				nb;
-	unsigned int	index;
-}					t_element;
 
 # include "../libs/ft_containers/ft_data_structres.h"
 # include "../libs/libft/libft.h"
@@ -27,23 +21,25 @@ typedef struct s_element
 # include <string.h>
 # include <unistd.h>
 
-int					ft_atoi_enhanced(char *str, int *error_flag);
-void				ft_check_args(int ac, char **av, t_stack *stack_a);
+/* Error handling */
+int		ft_atoi_enhanced(char *str);
+void	ft_print_error(void);
+void	ft_check_args(int ac, char **av, t_stack *stack_a);
 
 /* operations */
-void				sa(t_stack *a);
-void				sb(t_stack *b);
-void				pa(t_stack *b, t_stack *a);
-void				pb(t_stack *a, t_stack *b);
-void				ra(t_stack *a);
-void				rb(t_stack *b);
-void				rr(t_stack *a, t_stack *b);
-void				rra(t_stack *a);
-void				rrb(t_stack *b);
-void				rrr(t_stack *a, t_stack *b);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	pa(t_stack *b, t_stack *a);
+void	pb(t_stack *a, t_stack *b);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+void	rra(t_stack *a);
+void	rrb(t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
 
 /* Sorting algorithm */
-int					ft_is_sorted(t_stack *stack_a);
-void				ft_qsort(int *arr, unsigned int size);
+int		ft_is_sorted(t_stack *stack_a);
+void	ft_qsort(int *arr, unsigned int size);
 
 #endif

@@ -6,20 +6,20 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:42:42 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/12 12:35:55 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:08:52 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_print(void *data)
-{
-	t_element	*elm;
+// void	ft_print(void *data)
+// {
+// 	t_element	*elm;
 
-	elm = data;
-	printf("index: %d\t", elm->index);
-	printf("nb: %d\n", elm->nb);
-}
+// 	elm = data;
+// 	printf("index: %d\t", elm->index);
+// 	printf("nb: %d\n", elm->nb);
+// }
 
 int	main(int ac, char **av)
 {
