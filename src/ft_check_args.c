@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/11 13:32:41 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:25:01 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,27 @@ static void	ft_print_error(void)
 
 void	push_nb_to_stack(t_stack *stack, int nb)
 {
-	int	*nbr;
+	static unsigned int	index;
+	t_element			*elm;
 
-	nbr = malloc(sizeof(int));
-	if (nbr == NULL)
+	elm = malloc(sizeof(t_element));
+	if (elm == NULL)
 		return ;
-	(*nbr) = nb;
-	ft_stack_push(stack, nbr);
+	elm->nb = nb;
+	elm->index = index++;
+	ft_stack_push(stack, elm);
 }
 
-static int	ft_intcmp(void *a, void *b)
+static int	ft_intcmp(void *ref, void *data)
 {
-	int	*nb_a;
-	int	*nb_b;
+	int			*nb;
+	t_element	*elm;
 
-	nb_a = a;
-	nb_b = b;
-	if (*nb_a == *nb_b)
+	nb = ref;
+	elm = data;
+	// printf("nb 		: %d\n", *nb);
+	// printf("element : %d\n", elm->nb);
+	if (*nb == elm->nb)
 		return (0);
 	return (1);
 }
