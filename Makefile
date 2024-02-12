@@ -6,7 +6,7 @@
 #    By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/11 12:59:23 by klakbuic          #+#    #+#              #
-#    Updated: 2024/02/12 11:29:38 by klakbuic         ###   ########.fr        #
+#    Updated: 2024/02/12 11:30:48 by klakbuic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,5 +68,5 @@ re_bonus: fclean_bonus bonus
 COMMENT := "automtic push"
 push:
 	git add .
-	git commit -m $(COMMENT)
+	git commit -m"$(COMMENT)"
 	git push
