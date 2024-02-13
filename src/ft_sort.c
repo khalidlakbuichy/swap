@@ -6,12 +6,11 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/13 09:18:24 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:11:07 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
 
 // static int	elm_cmp(void *elm1, void *elm2)
 // {
@@ -39,7 +38,11 @@
 //     return (1);
 // }
 
-// void	ft_sort_stack(t_stack *a, t_stack *b)
-// {
-    
-// }
+void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b)
+{
+	int pivot;
+	
+	stack_b->top = NULL;
+	pivot = stack_a->size / 2;
+	
+}

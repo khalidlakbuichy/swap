@@ -6,7 +6,7 @@
 #    By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/11 12:59:23 by klakbuic          #+#    #+#              #
-#    Updated: 2024/02/12 13:13:51 by klakbuic         ###   ########.fr        #
+#    Updated: 2024/02/13 09:33:11 by klakbuic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ $(LIB):
 
 
 $(NAME): $(OBJS) $(LIB)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIB) -I $(HEADER) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -I $(HEADER) -o $(NAME)
 
 bonus: $(BONUS)
 

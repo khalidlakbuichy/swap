@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/13 09:26:02 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:04:35 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ void	ft_print_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	push_nb_to_stack(t_stack *stack_a, int nb)
+static void	push_nb_to_stack(t_stack *stack_a, int nb)
 {
-	int *nbr;
+	int	*nbr;
 
-	nbr = (int *) malloc(sizeof(int));
+	nbr = (int *)malloc(sizeof(int));
 	if (nbr == NULL)
+	{
 		/* Do some error handling */
+	}
 	*nbr = nb;
-	printf("nb: %d\n", *nbr);
+	// printf("nb: %d\n", *nbr);
 	ft_stack_push(stack_a, nbr);
 }
 
@@ -44,33 +46,35 @@ static int	ft_intcmp(void *ref, void *data)
 
 void	ft_print(void *data)
 {
-	int *nbr;
+	int	*nbr;
 
 	nbr = data;
 	printf("nb: %d\n", *nbr);
 }
 
-void	ft_change_stack(t_stack *stack_a, int *arr)
+static void	ft_change_stack(t_stack *stack_a, int *arr)
 {
 	int		i;
 	int		*nb;
 	t_list	*head;
+	void	*stack_item;
 
 	i = 0;
 	head = stack_a->top;
 	while ((head != NULL) && (i < stack_a->size))
 	{
-		if (ft_lstsearh_item(stack_a->top, (arr + i), ft_intcmp) == 0)
+		stack_item = ft_lstsearh_item(stack_a->top, (arr + i), ft_intcmp);
+		if (stack_item != NULL)
 		{
-			nb = head->content;
-			*nb = i++;
+			nb = stack_item;
+			*nb = (i + 1);
 		}
 		head = head->next;
+		i++;
 	}
-	ft_lstiter(stack_a->top, ft_print);
 }
 
-void	ft_make_table(t_stack *stack_a)
+static void	ft_make_table(t_stack *stack_a)
 {
 	t_list	*head;
 	int		*arr;
@@ -80,7 +84,9 @@ void	ft_make_table(t_stack *stack_a)
 	head = stack_a->top;
 	arr = (int *)malloc(sizeof(int) * (stack_a->size));
 	if (arr == NULL)
+	{
 		/* some error handling ;) */
+	}
 	i = 0;
 	while (head != NULL && (i < stack_a->size))
 	{
@@ -118,6 +124,5 @@ void	ft_check_args(int ac, char **av, t_stack *stack_a)
 		/* Don't forget the memor leaks ;)*/
 		i++;
 	}
-	// ft_lstiter(stack_a->top, ft_print);	
-	// ft_make_table(stack_a);
+	ft_make_table(stack_a);
 }

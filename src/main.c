@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:42:42 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/12 15:08:52 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:07:37 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ int	main(int ac, char **av)
 	stack_a = ft_stack_create();
 	stack_b = ft_stack_create();
 	ft_check_args(ac, av, stack_a);
+	ft_sort_stack(stack_a, stack_b);
 }

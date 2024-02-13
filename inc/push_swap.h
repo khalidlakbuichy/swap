@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:21:56 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/12 15:13:09 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:05:38 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 
 /* Sorting algorithm */
+void	ft_sort_stack(t_stack *a, t_stack *b);
 int		ft_is_sorted(t_stack *stack_a);
 void	ft_qsort(int *arr, unsigned int size);
 
