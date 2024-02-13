@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/12 15:14:26 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/13 09:26:02 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,78 +18,78 @@ void	ft_print_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	push_nb_to_stack(t_stack *stack, int nb)
+void	push_nb_to_stack(t_stack *stack_a, int nb)
 {
-	static unsigned int	index;
-	t_element			*elm;
+	int *nbr;
 
-	elm = malloc(sizeof(t_element));
-	if (elm == NULL)
-		return ;
-	elm->nb = nb;
-	elm->index = index++;
-	ft_stack_push(stack, elm);
+	nbr = (int *) malloc(sizeof(int));
+	if (nbr == NULL)
+		/* Do some error handling */
+	*nbr = nb;
+	printf("nb: %d\n", *nbr);
+	ft_stack_push(stack_a, nbr);
 }
 
 static int	ft_intcmp(void *ref, void *data)
 {
-	int			*nb;
-	t_element	*elm;
+	int	*nb_a;
+	int	*nb_b;
 
-	nb = ref;
-	elm = data;
-	// printf("nb 		: %d\n", *nb);
-	// printf("element : %d\n", elm->nb);
-	if (*nb == elm->nb)
+	nb_a = ref;
+	nb_b = data;
+	if (*nb_a == *nb_b)
 		return (0);
 	return (1);
 }
+
 void	ft_print(void *data)
 {
-	t_element	*elm;
+	int *nbr;
 
-	elm = data;
-	printf("nb: %d\n", elm->nb);
+	nbr = data;
+	printf("nb: %d\n", *nbr);
 }
 
-void	ft_change_stack(t_stack *a, int *arr)
+void	ft_change_stack(t_stack *stack_a, int *arr)
 {
-	int			i;
-	t_element	*elm;
-	t_list		*head;
+	int		i;
+	int		*nb;
+	t_list	*head;
 
 	i = 0;
-	head = a->top;
-	while (i < a->size)
+	head = stack_a->top;
+	while ((head != NULL) && (i < stack_a->size))
 	{
-		if (ft_lstsearh_item(a->top, (arr + i), ft_intcmp) == 0)
+		if (ft_lstsearh_item(stack_a->top, (arr + i), ft_intcmp) == 0)
 		{
-			elm = head->content;
-			elm->nb = i;
-			i++;
+			nb = head->content;
+			*nb = i++;
 		}
 		head = head->next;
 	}
-	ft_lstiter(a->top, ft_print);
+	ft_lstiter(stack_a->top, ft_print);
 }
 
-void	ft_make_table(t_stack *a)
+void	ft_make_table(t_stack *stack_a)
 {
-	// int			i;
-	t_element	*elm;
-	t_list		*head;
-	int			*tab;
+	t_list	*head;
+	int		*arr;
+	int		i;
+	int		*tmp;
 
-	head = a->top;
-	tab = (int *)malloc(sizeof(int) * (a->size));
-	for (int i = 0; (i < a->size) && head != NULL; i++)
+	head = stack_a->top;
+	arr = (int *)malloc(sizeof(int) * (stack_a->size));
+	if (arr == NULL)
+		/* some error handling ;) */
+	i = 0;
+	while (head != NULL && (i < stack_a->size))
 	{
-		elm = head->content;
-		tab[i] = elm->nb;
+		tmp = head->content;
+		arr[i++] = *tmp;
 		head = head->next;
 	}
-	ft_qsort(tab, a->size);
-	ft_change_stack(a, tab);
+	ft_qsort(arr, stack_a->size);
+	ft_change_stack(stack_a, arr);
 }
 
 void	ft_check_args(int ac, char **av, t_stack *stack_a)
@@ -110,12 +110,14 @@ void	ft_check_args(int ac, char **av, t_stack *stack_a)
 		{
 			nb = ft_atoi_enhanced(av[i]);
 			if (ft_lstsearh_item(stack_a->top, &nb, ft_intcmp))
-				ft_error();
+				ft_print_error();
 			push_nb_to_stack(stack_a, nb);
 		}
 		while (splited_av[j] != NULL)
 			push_nb_to_stack(stack_a, ft_atoi_enhanced(splited_av[j++]));
+		/* Don't forget the memor leaks ;)*/
 		i++;
 	}
-	ft_make_table(stack_a);
+	// ft_lstiter(stack_a->top, ft_print);	
+	// ft_make_table(stack_a);
 }
