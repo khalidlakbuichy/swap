@@ -6,7 +6,7 @@
 /*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/14 14:51:46 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/14 16:28:26 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,11 @@ int	ft_intcmp(void *ref, void *data)
 	nb_a = ref;
 	nb_b = data;
 	if (*nb_a > *nb_b)
-	{
-		// puts("sup");
 		return (1);
-	}
 	else if (*nb_a < *nb_b)
-	{
-		// puts("inf");
 		return (-1);
-	}
 	else
-	{
-		// puts("zero");
 		return (0);
-	}
 }
 
 // static void	ft_print(void *data)
