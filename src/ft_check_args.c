@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/14 10:08:19 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/14 11:23:17 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,21 @@ int	ft_intcmp(void *ref, void *data)
 
 	nb_a = ref;
 	nb_b = data;
-	printf("nb_a: %d\n", *nb_a);
-	printf("nb_b: %d\n", *nb_b);
+	// printf("nb_a: %d\n", *nb_a);
+	// printf("nb_b: %d\n", *nb_b);
 	if (*nb_a > *nb_b)
 	{
-		puts("sup");
+		// puts("sup");
 		return (1);
 	}
 	else if (*nb_a < *nb_b)
 	{
-		puts("inf");
+		// puts("inf");
 		return (-1);
 	}
 	else
 	{
-		puts("zero");
+		// puts("zero");
 		return (0);
 	}
 }
@@ -71,19 +71,18 @@ static void	ft_change_stack(t_stack *stack_a, int *arr)
 	int		i;
 	int		*nb;
 	t_list	*head;
-	void	*stack_item;
 
 	i = 0;
 	head = stack_a->top;
 	while ((head != NULL) && (i < stack_a->size))
 	{
-		stack_item = ft_lstsearh_item(stack_a->top, (arr + i), ft_intcmp);
-		if (stack_item != NULL)
+		if (ft_intcmp(head->content, (arr + i)) == 0)
 		{
-			nb = stack_item;
-			*nb = (i + 1);
+			nb = head->content;
+			*nb = i;
+			head = head->next;
+			i = -1;
 		}
-		head = head->next;
 		i++;
 	}
 }
@@ -105,10 +104,13 @@ static void	ft_make_table(t_stack *stack_a)
 	while (head != NULL && (i < stack_a->size))
 	{
 		tmp = head->content;
+		printf("stack_a[%d]-> %d\n", i, *tmp);
 		arr[i++] = *tmp;
 		head = head->next;
 	}
 	ft_qsort(arr, stack_a->size);
+	for (int i = 0; i < stack_a->size; i++)
+		printf("arr[%d] -> %d\n", i, arr[i]);
 	ft_change_stack(stack_a, arr);
 }
 
