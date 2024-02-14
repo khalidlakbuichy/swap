@@ -6,62 +6,54 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/14 11:26:42 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:04:14 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-// static int	elm_cmp(void *elm1, void *elm2)
-// {
-// 	t_element	*elma;
-// 	t_element	*elmb;
-
-// 	elma = elm1;
-// 	elmb = elm2;
-//     if (elma->nb <= elmb->nb)
-//         return (1);
-//     return (0);
-// }
-
-int	ft_is_sorted(t_stack *stack_a)
+static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunk_size)
 {
-	t_list	*head;
+	int	start_chunk;
+	int	end_chunk;
+	int	mid;
 
-	head = stack_a->top;
-	while (head->next != NULL)
+	start_chunk = 0;
+	end_chunk = stack_a->size / chunk_size;
+	mid = end_chunk / 2;
+	printf("start: %d\n", start_chunk);
+	printf("end: %d\n", end_chunk);
+	printf("mid: %d\n", mid);
+	while (stack_a->size > 0)
 	{
-		if (ft_intcmp(head->content, (head->next)->content) > 0)
-			return (0);
-		head = head->next;
+		printf("stack a size: %d\n", stack_a->size);
+		while (stack_b->size <= end_chunk)
+		{
+			if (ft_intcmp(ft_stack_top(stack_a), &start_chunk) >= 0
+				&& ft_intcmp(ft_stack_top(stack_a), &end_chunk) < 0)
+			{
+				// printf("stack b size: %d\n", stack_b->size);
+				if (ft_intcmp(ft_stack_top(stack_a), &mid) >= 0)
+				{
+					pb(stack_a, stack_b);
+					rb(stack_b);
+				}
+				else
+				{
+					pb(stack_b, stack_a);
+					printf("size_a: %d\n", stack_a->size);
+				}
+			}
+			else
+				ra(stack_a);
+		}
+		start_chunk = end_chunk;
+		end_chunk += chunk_size;
+		mid = (end_chunk / 2);
 	}
-	return (1);
 }
 
-void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b)
+void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b, int chunk_size)
 {
-	int pivot;
-	t_list *head;
-
-	head = stack_a->top;
-	stack_b->top = NULL;
-	pivot = stack_a->size / 2;
-	while (head != NULL)
-	{
-		if (ft_intcmp(&pivot, head->content) > 0)
-		{
-			if (head == stack_a->top)
-				pb(stack_a, stack_b);
-			else
-			{
-				while ()
-				{
-					/* code */
-				}
-
-			}
-		}
-		head = head->next;
-	}
-
+	push_all_2b(stack_a, stack_b, chunk_size);
 }

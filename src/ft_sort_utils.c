@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_pop.c                                     :+:      :+:    :+:   */
+/*   ft_sort_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 08:58:17 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/14 13:09:39 by klakbuic         ###   ########.fr       */
+/*   Created: 2024/02/14 12:11:11 by klakbuic          #+#    #+#             */
+/*   Updated: 2024/02/14 12:12:17 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stack.h"
+#include "../inc/push_swap.h"
 
-bool	ft_stack_pop(t_stack *stack, void (*del)(void *))
+int	ft_is_sorted(t_stack *stack_a)
 {
-	bool	feedback;
+	t_list *head;
 
-	if (stack == NULL || ft_stack_is_empty(stack))
-		return (false);
-	feedback = ft_lstdel_front(&stack->top, del);
-	if (feedback == true)
+	head = stack_a->top;
+	while (head->next != NULL)
 	{
-		stack->size--;
-		return (true);
+		if (ft_intcmp(head->content, (head->next)->content) > 0)
+			return (0);
+		head = head->next;
 	}
-	return (false);
+	return (1);
 }

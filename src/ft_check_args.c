@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/14 11:23:17 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/14 12:36:30 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,10 @@ static void	ft_make_table(t_stack *stack_a)
 	while (head != NULL && (i < stack_a->size))
 	{
 		tmp = head->content;
-		printf("stack_a[%d]-> %d\n", i, *tmp);
 		arr[i++] = *tmp;
 		head = head->next;
 	}
 	ft_qsort(arr, stack_a->size);
-	for (int i = 0; i < stack_a->size; i++)
-		printf("arr[%d] -> %d\n", i, arr[i]);
 	ft_change_stack(stack_a, arr);
 }
 
