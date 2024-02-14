@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/14 13:04:14 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/14 13:46:07 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,17 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunk_size)
 	printf("mid: %d\n", mid);
 	while (stack_a->size > 0)
 	{
-		printf("stack a size: %d\n", stack_a->size);
 		while (stack_b->size <= end_chunk)
 		{
+			printf("cm%d")
 			if (ft_intcmp(ft_stack_top(stack_a), &start_chunk) >= 0
 				&& ft_intcmp(ft_stack_top(stack_a), &end_chunk) < 0)
 			{
 				// printf("stack b size: %d\n", stack_b->size);
+				pb(stack_a, stack_b);
+				printf("size b: %d\n", stack_b->size);
 				if (ft_intcmp(ft_stack_top(stack_a), &mid) >= 0)
-				{
-					pb(stack_a, stack_b);
 					rb(stack_b);
-				}
-				else
-				{
-					pb(stack_b, stack_a);
-					printf("size_a: %d\n", stack_a->size);
-				}
 			}
 			else
 				ra(stack_a);
