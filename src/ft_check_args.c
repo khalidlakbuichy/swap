@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/13 10:04:35 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:54:13 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,14 @@ static void	push_nb_to_stack(t_stack *stack_a, int nb)
 	ft_stack_push(stack_a, nbr);
 }
 
-static int	ft_intcmp(void *ref, void *data)
+int	ft_intcmp(void *ref, void *data)
 {
 	int	*nb_a;
 	int	*nb_b;
 
 	nb_a = ref;
 	nb_b = data;
-	if (*nb_a == *nb_b)
-		return (0);
-	return (1);
+	return (*nb_a - *nb_b);
 }
 
 void	ft_print(void *data)

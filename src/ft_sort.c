@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/13 10:11:07 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/13 10:57:20 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,28 @@
 void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	int pivot;
+	t_list *head;
 	
+	head = stack_a->top;
 	stack_b->top = NULL;
 	pivot = stack_a->size / 2;
+	while (head != NULL)
+	{
+		if (ft_intcmp(&pivot, head->content) > 0)
+		{
+			if (head == stack_a->top)
+				pb(stack_a, stack_b);
+			else
+			{
+				while ()
+				{
+					/* code */
+				}
+				
+			}
+		}
+		head = head->next;
+	}
 	
+	 
 }
