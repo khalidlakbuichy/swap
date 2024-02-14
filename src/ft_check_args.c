@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/13 10:54:13 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:08:19 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,32 @@ int	ft_intcmp(void *ref, void *data)
 
 	nb_a = ref;
 	nb_b = data;
-	return (*nb_a - *nb_b);
+	printf("nb_a: %d\n", *nb_a);
+	printf("nb_b: %d\n", *nb_b);
+	if (*nb_a > *nb_b)
+	{
+		puts("sup");
+		return (1);
+	}
+	else if (*nb_a < *nb_b)
+	{
+		puts("inf");
+		return (-1);
+	}
+	else
+	{
+		puts("zero");
+		return (0);
+	}
 }
 
-void	ft_print(void *data)
-{
-	int	*nbr;
+// static void	ft_print(void *data)
+// {
+// 	int	*nbr;
 
-	nbr = data;
-	printf("nb: %d\n", *nbr);
-}
+// 	nbr = data;
+// 	printf("nb: %d\n", *nbr);
+// }
 
 static void	ft_change_stack(t_stack *stack_a, int *arr)
 {

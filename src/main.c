@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:42:42 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/13 10:07:37 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/14 10:11:47 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-// void	ft_print(void *data)
-// {
-// 	t_element	*elm;
+static void	ft_print(void *data)
+{
+	int	*nbr;
 
-// 	elm = data;
-// 	printf("index: %d\t", elm->index);
-// 	printf("nb: %d\n", elm->nb);
-// }
+	nbr = data;
+	printf("nb: %d\n", *nbr);
+}
 
 int	main(int ac, char **av)
 {
@@ -34,5 +33,5 @@ int	main(int ac, char **av)
 	stack_a = ft_stack_create();
 	stack_b = ft_stack_create();
 	ft_check_args(ac, av, stack_a);
-	ft_sort_stack(stack_a, stack_b);
+	printf("is sorted: %d\n", ft_is_sorted(stack_a));
 }
