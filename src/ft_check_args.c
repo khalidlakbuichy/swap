@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/14 12:36:30 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:51:46 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int	ft_intcmp(void *ref, void *data)
 
 	nb_a = ref;
 	nb_b = data;
-	// printf("nb_a: %d\n", *nb_a);
-	// printf("nb_b: %d\n", *nb_b);
 	if (*nb_a > *nb_b)
 	{
 		// puts("sup");

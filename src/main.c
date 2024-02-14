@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:42:42 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/14 13:37:57 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:52:33 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int	main(int ac, char **av)
 	// puts("------------------------------- stack a: ----------------------");
 	// printf("stack_a size: %d\n", stack_a->size);
 	// ft_lstiter(stack_a->top, ft_print);
+	// ra(stack_a);
+	// ra(stack_a);
+	// ra(stack_a);
+	// ft_lstiter(stack_a->top, ft_print);
+	// printf("stack: %d\n", stack_a->size);
 	// puts("---------------------------------------------------------------");
 	// puts("------------------------------- stack a: ----------------------");
 	// ft_stack_pop(stack_a, free);
