@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rrotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:18:53 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/11 13:32:15 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:08:02 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	rra(t_stack *a)
 void	rrb(t_stack *b)
 {
 	ft_rrotate(b);
-	ft_putendl_fd("rra", STDOUT_FILENO);
+	ft_putendl_fd("rrb", STDOUT_FILENO);
 }
 
 void	rrr(t_stack *a, t_stack *b)
