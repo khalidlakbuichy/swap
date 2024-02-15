@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:21:56 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/14 12:36:03 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:12:51 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_print_error(void);
 void	ft_check_args(int ac, char **av, t_stack *stack_a);
 
 /* operations */
+bool	ft_stack_rpush(t_stack *stack, void *data);
 void	sa(t_stack *a);
 void	sb(t_stack *b);
 void	pa(t_stack *b, t_stack *a);

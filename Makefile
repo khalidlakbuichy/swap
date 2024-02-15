@@ -6,7 +6,7 @@
 #    By: khalid <khalid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/11 12:59:23 by klakbuic          #+#    #+#              #
-#    Updated: 2024/02/15 09:21:04 by khalid           ###   ########.fr        #
+#    Updated: 2024/02/15 12:13:09 by khalid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ BONUS   = checker
 HEADER  = ../inc/push_swap.h
 
 CC       = cc
-CFLAGS   = -Wall -Wextra -g -fsanitize=address # -Werror
+CFLAGS   = -Wall -Wextra # -g -fsanitize=address -Werror
 
 LIB      = libs/libft/libft.a libs/ft_containers/containersft.a
 
 SRCS     = src/ft_atoi_enhanced.c src/ft_check_args.c src/ft_push.c src/ft_rorate.c \
            src/ft_rrotate.c src/ft_swap.c src/main.c src/ft_sort.c src/ft_qsort.c \
-		   src/ft_sort_utils.c
+		   src/ft_sort_utils.c src/ft_stack_rpush.c
 
 SRCS_B   = 
 

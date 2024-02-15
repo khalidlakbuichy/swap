@@ -6,7 +6,7 @@
 /*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/15 09:03:58 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/15 12:16:07 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	push_nb_to_stack(t_stack *stack_a, int nb)
 	}
 	*nbr = nb;
 	// printf("nb: %d\n", *nbr);
-	ft_stack_push(stack_a, nbr);
+	ft_stack_rpush(stack_a, nbr);
 }
 
 int	ft_intcmp(void *ref, void *data)

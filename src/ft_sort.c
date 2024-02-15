@@ -6,13 +6,13 @@
 /*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/15 11:09:46 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/15 12:25:31 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static	push_top_2b(t_stack *stack_a, t_stack *stack_b, int *mid)
+static	void push_top_2b(t_stack *stack_a, t_stack *stack_b, int *mid)
 {
 	int	*nb_top;
 
@@ -35,16 +35,16 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 	end_chunk = chunk_size;
 	mid = end_chunk / 2;
 	int flag = stack_a->size;
-	// printf("stack a size: %d\n", stack_a->size);
-	// printf("chuck size:%d\n", chunk_size);
-	// printf("start: %d\n", start_chunk);
-	// printf("end: %d\n", end_chunk);
-	// printf("mid: %d\n", mid);
+	printf("stack a size: %d\n", stack_a->size);
+	printf("chuck size:%d\n", chunk_size);
+	printf("start: %d\n", start_chunk);
+	printf("end: %d\n", end_chunk);
+	printf("mid: %d\n", mid);
 	while (stack_a->size > 0)
 	{
-	// 		printf("start: %d\n", start_chunk);
-	// printf("end: %d\n", end_chunk);
-	// printf("mid: %d\n", mid);
+			printf("start: %d\n", start_chunk);
+	printf("end: %d\n", end_chunk);
+	printf("mid: %d\n", mid);
 		while (stack_b->size < end_chunk)
 		{
 			// nb_a = ft_stack_top(stack_a);
@@ -59,7 +59,7 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 		end_chunk += chunk_size;
 		if (end_chunk > flag)
 			end_chunk = flag;
-		mid = (end_chunk / 2);
+		mid = (end_chunk + start_chunk) / 2;
 	// printf("stack b size: %d\n", stack_b->size);
 	}
 }
@@ -67,7 +67,7 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 // {
 // 	if ()
 // }
-static	push_back_2a(t_stack *stack_a, t_stack *stack_b)
+static	void push_back_2a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_list	*head;
 	int		nb;
@@ -82,9 +82,7 @@ static	push_back_2a(t_stack *stack_a, t_stack *stack_b)
 		head = stack_b->top;
 		while (head != NULL)
 		{
-			int *dig = stack_b->top->content;
-			printf("stack->top: %d\n", *dig);
-			printf("nb: %d\n", nb);
+			int *dig = head->content;
 			if (ft_intcmp(head->content, &nb) == 0)
 			{
 				if (i >= mid)
@@ -99,12 +97,18 @@ static	push_back_2a(t_stack *stack_a, t_stack *stack_b)
 					while (ft_intcmp(stack_b->top->content, &nb) != 0)
 						rb(stack_b);
 				}
+				dig = stack_b->top->content;
 				pa(stack_b, stack_a);
+				break;
 			}
 			head = head->next;
 			i++;
 		}
 		nb--;
+		printf("index: %d\n", i);
+		int *dig = stack_a->top->content;
+		printf("stack a->top: %d\n", *dig);
+		// printf("nb: %d\n", nb);
 	}
 }
 
@@ -113,4 +117,5 @@ void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b, int chunks)
 	push_all_2b(stack_a, stack_b, chunks);
 	push_back_2a(stack_a, stack_b);
 	// printf("stack a size:%d\n", stack_a->size);
+	// printf("stack b size:%d\n", stack_b->size);
 }

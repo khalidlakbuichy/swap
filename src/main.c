@@ -6,7 +6,7 @@
 /*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:42:42 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/15 10:48:43 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/15 12:20:31 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,20 @@ int	main(int ac, char **av)
 	stack_b = ft_stack_create();
 	ft_check_args(ac, av, stack_a);
 	// ft_lstiter(stack_a->top, ft_print);
-	ft_sort_stack(stack_a, stack_b, 4);
-	// ft_lstiter(stack_b->top, ft_print);
-	// rrb(stack_b);
-	// rrb(stack_b);
-	// ft_lstiter(stack_b->top, ft_print);
 	// puts("------------------------------- stack a: ----------------------");
+	// ft_lstiter(stack_a->top, ft_print);
+	// puts("---------------------------------------------------------------");
+	ft_sort_stack(stack_a, stack_b, 4);
+	// puts("------------------------------- stack a: ----------------------");
+	// ft_lstiter(stack_a->top, ft_print);
+	// rrb(stack_b);
+	// rrb(stack_b);
+	// ft_lstiter(stack_b->top, ft_print);
 	// printf("stack_a size: %d\n", stack_a->size);
 	// ra(stack_a);
 	// ra(stack_a);
 	// ra(stack_a);
 	// printf("stack: %d\n", stack_a->size);
-	// puts("---------------------------------------------------------------");
 	// puts("------------------------------- stack a: ----------------------");
 	// ft_stack_pop(stack_a, free);
 	// ft_stack_pop(stack_a, free);
