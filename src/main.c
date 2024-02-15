@@ -6,7 +6,7 @@
 /*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:42:42 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/15 12:20:31 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/15 14:53:05 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 	// puts("------------------------------- stack a: ----------------------");
 	// ft_lstiter(stack_a->top, ft_print);
 	// puts("---------------------------------------------------------------");
-	ft_sort_stack(stack_a, stack_b, 4);
+	ft_sort_stack(stack_a, stack_b);
 	// puts("------------------------------- stack a: ----------------------");
 	// ft_lstiter(stack_a->top, ft_print);
 	// rrb(stack_b);
