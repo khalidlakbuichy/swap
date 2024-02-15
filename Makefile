@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+         #
+#    By: khalid <khalid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/11 12:59:23 by klakbuic          #+#    #+#              #
-#    Updated: 2024/02/14 12:12:48 by klakbuic         ###   ########.fr        #
+#    Updated: 2024/02/15 09:21:04 by khalid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BONUS   = checker
 HEADER  = ../inc/push_swap.h
 
 CC       = cc
-CFLAGS   = -Wall -Wextra #-Werror -fsanitize=address
+CFLAGS   = -Wall -Wextra -g -fsanitize=address # -Werror
 
 LIB      = libs/libft/libft.a libs/ft_containers/containersft.a
 

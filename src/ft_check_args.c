@@ -6,7 +6,7 @@
 /*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/14 16:28:26 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/15 09:03:58 by khalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	ft_change_stack(t_stack *stack_a, int *arr)
 		if (ft_intcmp(head->content, (arr + i)) == 0)
 		{
 			nb = head->content;
-			*nb = i;
+			*nb = (i + 1);
 			head = head->next;
 			i = -1;
 		}
