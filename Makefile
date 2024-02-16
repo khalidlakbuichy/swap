@@ -6,7 +6,7 @@
 #    By: khalid <khalid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/11 12:59:23 by klakbuic          #+#    #+#              #
-#    Updated: 2024/02/15 13:47:03 by khalid           ###   ########.fr        #
+#    Updated: 2024/02/16 10:42:32 by khalid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BONUS   = checker
 HEADER  = ../inc/push_swap.h
 
 CC       = cc
-CFLAGS   = -Wall -Wextra # -g -fsanitize=address -Werror
+CFLAGS   = -Wall -Wextra #-g -fsanitize=address #-Werror
 
 LIB      = libs/libft/libft.a libs/ft_containers/containersft.a
 
