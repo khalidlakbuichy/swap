@@ -3,6 +3,7 @@
         "push_swap.h": "c",
         "ft_data_structres.h": "c",
         "stdbool.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "ft_lst.h": "c"
     }
 }

@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/17 09:32:08 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/17 13:35:08 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,16 @@ static void	push_top_2b(t_stack *stack_a, t_stack *stack_b, int *mid)
 		rb(stack_b);
 }
 
-static int get_chunck_size(t_stack *stack_a)
+static int	get_chunck_size(t_stack *stack_a)
 {
-	if (stack_a->size > 100)
-		return (stack_a->size / 8);
+	if (stack_a->size > 300)
+		return (stack_a->size / 7);
+	else if (stack_a->size > 100)
+		return (stack_a->size / 5);
 	else if (stack_a->size > 3)
 		return (stack_a->size / 4);
+	else
+		return (stack_a->size);
 }
 
 static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
@@ -53,7 +57,6 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 	// printf("end: %d\n", end_chunk);
 	while (stack_a->size > 2)
 	{
-
 		head = stack_a->top;
 		i = 0;
 		while (head != NULL && stack_b->size < end_chunk)
@@ -64,13 +67,15 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 				if (i >= (stack_a->size / 2))
 				{
 					while (!(ft_intcmp(stack_a->top->content, &start_chunk) >= 0
-							&& ft_intcmp(stack_a->top->content, &end_chunk) <= 0))
+							&& ft_intcmp(stack_a->top->content,
+								&end_chunk) <= 0))
 						rra(stack_a);
 				}
 				else
 				{
 					while (!(ft_intcmp(stack_a->top->content, &start_chunk) >= 0
-							&& ft_intcmp(stack_a->top->content, &end_chunk) <= 0))
+							&& ft_intcmp(stack_a->top->content,
+								&end_chunk) <= 0))
 						ra(stack_a);
 				}
 				nb_a = ft_stack_top(stack_a);
@@ -79,15 +84,16 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 				pb(stack_a, stack_b);
 				if (ft_intcmp(stack_b->top->content, &mid) >= 0)
 				{
-					if (stack_a->top && !(ft_intcmp(stack_a->top->content, &start_chunk) >= 0
-						&& ft_intcmp(stack_a->top->content, &end_chunk) <= 0))
+					if (stack_a->top && !(ft_intcmp(stack_a->top->content,
+								&start_chunk) >= 0
+							&& ft_intcmp(stack_a->top->content,
+								&end_chunk) <= 0))
 						rr(stack_a, stack_b);
 					else
 						rb(stack_b);
 				}
 				head = stack_a->top;
 				i = 0;
-				
 			}
 			else
 			{
@@ -97,33 +103,37 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 		}
 		start_chunk = end_chunk + 1;
 		end_chunk += get_chunck_size(stack_a);
-		printf("chunck size: %d\n", get_chunck_size(stack_a));
-		printf("end chunck: %d\n", end_chunk);
+		// printf("chunck size: %d\n", get_chunck_size(stack_a));
+		// printf("end chunck: %d\n", end_chunk);
 		if (end_chunk > flag)
 			end_chunk = flag;
 		mid = (end_chunk + start_chunk) / 2;
 	}
 }
-// static void	push_nb_2a(t_stack *stack_a, t_stack *stack_b, int *nb,int index)
-// {
-// 	if ()
-// }
+
+static int ft_closet(int nb, int nb2, int *i, t_stack *stack_b)
+{
+	
+}
+
 static void	push_back_2a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_list	*head;
 	int		nb;
-	int nb2;
 	int		i;
+	int		nb2;
 
 	nb = stack_b->size;
+	nb2 = nb - 1;
 	while (nb > 0)
 	{
 		i = 0;
 		head = stack_b->top;
 		while (head != NULL)
 		{
-			if (ft_intcmp(head->content, &nb) == 0)
+			if (ft_intcmp(head->content, &nb) == 0 || ft_intcmp(head->content, &nb2) == 0)
 			{
+				ft_closet(nb, nb2, i);
 				if (i >= (stack_b->size / 2))
 				{
 					while (ft_intcmp(stack_b->top->content, &nb) != 0)
@@ -141,7 +151,6 @@ static void	push_back_2a(t_stack *stack_a, t_stack *stack_b)
 			i++;
 		}
 		nb--;
-		nb2 = nb - 1;
 		// printf("index: %d\n", i);
 		// int *dig = stack_a->top->content;
 		// printf("stack a->top: %d\n", *dig);

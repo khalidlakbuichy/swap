@@ -6,7 +6,7 @@ SRC_STACK_DIR = stack
 
 SRCS_LIST = ft_lstadd_at_index.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
 			ft_lstdel_at_index.c ft_lstdel_back.c ft_lstdel_front.c ft_lstiter.c \
-			ft_lstmap.c ft_lstnew.c ft_lstsearch_item.c ft_lstsize.c
+			ft_lstmap.c ft_lstnew.c ft_lstsearch_item.c ft_lstsize.c ft_lstlast.c
 
 SRCS_STACK = ft_stack_clear.c ft_stack_create.c ft_stack_is_empty.c ft_stack_pop.c ft_stack_push.c ft_stack_size.c ft_stack_top.c
 
