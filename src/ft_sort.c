@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/16 10:28:24 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/17 09:32:08 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ static void	push_top_2b(t_stack *stack_a, t_stack *stack_b, int *mid)
 		rb(stack_b);
 }
 
+static int get_chunck_size(t_stack *stack_a)
+{
+	if (stack_a->size > 100)
+		return (stack_a->size / 8);
+	else if (stack_a->size > 3)
+		return (stack_a->size / 4);
+}
+
 static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 {
 	int		start_chunk;
@@ -33,7 +41,8 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 	t_list	*head;
 	int		i;
 
-	chunk_size = stack_a->size / chunks;
+	// chunk_size = stack_a->size / chunks;
+	chunk_size = get_chunck_size(stack_a);
 	start_chunk = 1;
 	end_chunk = chunk_size;
 	mid = end_chunk / 2;
@@ -42,7 +51,7 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 	// printf("chuck size:%d\n", chunk_size);
 	// printf("start: %d\n", start_chunk);
 	// printf("end: %d\n", end_chunk);
-	while (stack_a->size > 0)
+	while (stack_a->size > 2)
 	{
 
 		head = stack_a->top;
@@ -87,7 +96,9 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b, int chunks)
 			}
 		}
 		start_chunk = end_chunk + 1;
-		end_chunk += chunk_size;
+		end_chunk += get_chunck_size(stack_a);
+		printf("chunck size: %d\n", get_chunck_size(stack_a));
+		printf("end chunck: %d\n", end_chunk);
 		if (end_chunk > flag)
 			end_chunk = flag;
 		mid = (end_chunk + start_chunk) / 2;
@@ -101,6 +112,7 @@ static void	push_back_2a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_list	*head;
 	int		nb;
+	int nb2;
 	int		i;
 
 	nb = stack_b->size;
@@ -129,6 +141,7 @@ static void	push_back_2a(t_stack *stack_a, t_stack *stack_b)
 			i++;
 		}
 		nb--;
+		nb2 = nb - 1;
 		// printf("index: %d\n", i);
 		// int *dig = stack_a->top->content;
 		// printf("stack a->top: %d\n", *dig);
@@ -145,7 +158,7 @@ void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b)
 		push_all_2b(stack_a, stack_b, 4);
 		push_back_2a(stack_a, stack_b);
 	}
-	else if (stack_a->size <= 500)
+	else
 	{
 		push_all_2b(stack_a, stack_b, 8);
 		push_back_2a(stack_a, stack_b);
