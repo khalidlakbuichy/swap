@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/15 12:16:07 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/18 11:25:34 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static void	ft_change_stack(t_stack *stack_a, int *arr)
 		}
 		i++;
 	}
+	free(arr);
 }
 
 static void	ft_make_table(t_stack *stack_a)
@@ -100,6 +101,18 @@ static void	ft_make_table(t_stack *stack_a)
 	ft_change_stack(stack_a, arr);
 }
 
+static void	split_free(char **splited_str)
+{
+	int	i;
+
+	i = -1;
+	if (splited_str == NULL)
+		return ;
+	while (splited_str[++i] != NULL)
+		free(splited_str[i]);
+	free(splited_str);
+}
+
 void	ft_check_args(int ac, char **av, t_stack *stack_a)
 {
 	int		nb;
@@ -123,7 +136,7 @@ void	ft_check_args(int ac, char **av, t_stack *stack_a)
 		}
 		while (splited_av[j] != NULL)
 			push_nb_to_stack(stack_a, ft_atoi_enhanced(splited_av[j++]));
-		/* Don't forget the memor leaks ;)*/
+		split_free(splited_av);
 		i++;
 	}
 	ft_make_table(stack_a);

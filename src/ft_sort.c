@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/18 10:31:32 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/18 11:07:10 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,24 @@ static int	is_in_range(void *data, void *start, void *end)
 	return (ft_intcmp(data, start) >= 0 && ft_intcmp(data, end) <= 0);
 }
 
-static void	put_top(t_stack *stack_a, int index, void *start, void *end)
+static void	put_top(t_stack *stack_a, t_stack *stack_b, int i, t_chunk *chunk)
 {
-	if (index >= (stack_a->size / 2))
+	if (i >= (stack_a->size / 2))
 	{
-		while (!is_in_range(stack_a->top->content, start, end))
+		while (!is_in_range(stack_a->top->content, &chunk->start, &chunk->end))
 			rra(stack_a);
 	}
 	else
 	{
-		while (!is_in_range(stack_a->top->content, start, end))
-			ra(stack_a);
+		while (!is_in_range(stack_a->top->content, &chunk->start, &chunk->end))
+		{
+			if (stack_b->top && ft_intcmp(stack_b->top->content, &chunk->mid) >= 0)
+				rr(stack_a, stack_b);
+			else
+				ra(stack_a);
+		}
 	}
+	pb(stack_a, stack_b);
 }
 
 static void	setup_chunk(t_chunk *chunk, t_stack *stack_a)
@@ -80,10 +86,7 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b)
 		{
 			if (is_in_range(head->content, &chunk.start, &chunk.end))
 			{
-				put_top(stack_a, i, &chunk.start, &chunk.end);
-				pb(stack_a, stack_b);
-				if (ft_intcmp(stack_b->top->content, &chunk.mid) >= 0)
-					rb(stack_b);
+				put_top(stack_a, stack_b, i, &chunk);
 				head = stack_a->top;
 				i = 0;
 			}

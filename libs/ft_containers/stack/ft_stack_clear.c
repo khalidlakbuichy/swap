@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stack_clear.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:39:37 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/04 12:57:25 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/18 11:21:49 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,8 @@ bool	ft_stack_clear(t_stack *stack, void (*del)(void *))
 {
 	if (stack == NULL)
 		return (false);
-	return (ft_lstclear(&stack->top, del));
+	ft_lstclear(&stack->top, del);
+	free(stack);
+	stack = NULL;
+	return(true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:42:42 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/15 14:53:05 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/18 11:23:34 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,6 @@ int	main(int ac, char **av)
 	// ft_lstiter(stack_a->top, ft_print);
 	// puts("---------------------------------------------------------------");
 	// printf("is sorted: %d\n", ft_is_sorted(stack_a));
+	ft_stack_clear(stack_a, free);
+	ft_stack_clear(stack_b, free);
 }
