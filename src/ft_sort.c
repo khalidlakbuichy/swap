@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/18 10:17:58 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/18 10:31:32 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,29 +102,22 @@ static void	push_back_2a(t_stack *stack_a, t_stack *stack_b)
 	t_list	*head;
 	int		nb;
 	int		i;
-	int		nb2;
 
 	nb = stack_b->size;
-	nb2 = nb - 1;
 	while (nb > 0)
 	{
 		i = 0;
 		head = stack_b->top;
 		while (head != NULL)
 		{
-			if (ft_intcmp(head->content, &nb) == 0 || ft_intcmp(head->content,
-					&nb2) == 0)
+			if (ft_intcmp(head->content, &nb) == 0)
 			{
 				if (i >= (stack_b->size / 2))
-				{
 					while (ft_intcmp(stack_b->top->content, &nb) != 0)
 						rrb(stack_b);
-				}
 				else
-				{
 					while (ft_intcmp(stack_b->top->content, &nb) != 0)
 						rb(stack_b);
-				}
 				pa(stack_b, stack_a);
 				break ;
 			}
