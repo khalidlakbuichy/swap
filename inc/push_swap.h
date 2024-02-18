@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khalid <khalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:21:56 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/15 14:53:14 by khalid           ###   ########.fr       */
+/*   Updated: 2024/02/18 10:10:33 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+/* struct for chuncks data: the start of the chunck the middle and the end */
+typedef struct s_chunk
+{
+	int	start;
+	int	mid;
+	int	end;
+	int	max;
+}		t_chunk;
 
 /* Error handling */
 int		ft_atoi_enhanced(char *str);
