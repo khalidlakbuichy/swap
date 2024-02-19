@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_data_structres.h                                :+:      :+:    :+:   */
+/*   ft_is_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 12:22:09 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/19 10:47:59 by klakbuic         ###   ########.fr       */
+/*   Created: 2024/02/19 11:23:47 by klakbuic          #+#    #+#             */
+/*   Updated: 2024/02/19 12:05:56 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DATA_STRUCTRES_H
-# define FT_DATA_STRUCTRES_H
+#include "../inc/push_swap.h"
 
-/* lists functions */
-# include "list/ft_lst.h"
+int	ft_is_sorted(t_stack *stack_a)
+{
+	t_list *head;
 
-/* stack functions */
-# include "stack/ft_stack.h"
-
-#endif
+	head = stack_a->top;
+	while (head->next != NULL)
+	{
+		if (ft_intcmp(head->content, head->next->content) > 0)
+			return (0);
+		head = head->next;
+	}
+	return (1);
+}

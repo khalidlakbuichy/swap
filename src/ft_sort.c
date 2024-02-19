@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/18 11:07:10 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/19 09:37:24 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ static void	push_top_2b(t_stack *stack_a, t_stack *stack_b, int *mid)
 
 static int	get_chunck_size(t_stack *stack_a)
 {
-	if (stack_a->size > 300)
+	if (stack_a->size > 350)
 		return (stack_a->size / 7);
+	else if (stack_a->size > 250)
+		return (stack_a->size / 6);
 	else if (stack_a->size > 100)
 		return (stack_a->size / 5);
 	else if (stack_a->size > 3)
@@ -44,13 +46,16 @@ static void	put_top(t_stack *stack_a, t_stack *stack_b, int i, t_chunk *chunk)
 	if (i >= (stack_a->size / 2))
 	{
 		while (!is_in_range(stack_a->top->content, &chunk->start, &chunk->end))
+		{
 			rra(stack_a);
+		}
 	}
 	else
 	{
 		while (!is_in_range(stack_a->top->content, &chunk->start, &chunk->end))
 		{
-			if (stack_b->top && ft_intcmp(stack_b->top->content, &chunk->mid) >= 0)
+			if (stack_b->top && ft_intcmp(stack_b->top->content,
+					&chunk->mid) >= 0)
 				rr(stack_a, stack_b);
 			else
 				ra(stack_a);
@@ -78,7 +83,7 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b)
 	chunk.end = get_chunck_size(stack_a);
 	chunk.mid = chunk.end / 2;
 	chunk.max = stack_a->size;
-	while (stack_a->size > 2)
+	while (stack_a->size > 0)
 	{
 		head = stack_a->top;
 		i = 0;
@@ -96,7 +101,8 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b)
 				i++;
 			}
 		}
-		setup_chunk(&chunk, stack_a);
+		if (stack_b->size == chunk.end)
+			setup_chunk(&chunk, stack_a);
 	}
 }
 
@@ -104,10 +110,11 @@ static void	push_back_2a(t_stack *stack_a, t_stack *stack_b)
 {
 	t_list	*head;
 	int		nb;
+	int		nb2;
 	int		i;
 
-	nb = stack_b->size;
-	while (nb > 0)
+	nb = stack_b->size + 1;
+	while (--nb > 0)
 	{
 		i = 0;
 		head = stack_b->top;
@@ -127,7 +134,6 @@ static void	push_back_2a(t_stack *stack_a, t_stack *stack_b)
 			head = head->next;
 			i++;
 		}
-		nb--;
 	}
 }
 
@@ -135,14 +141,6 @@ void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size <= 3)
 		ft_small_sort(stack_a);
-	else if (stack_a->size <= 100)
-	{
-		push_all_2b(stack_a, stack_b);
-		push_back_2a(stack_a, stack_b);
-	}
-	else
-	{
-		push_all_2b(stack_a, stack_b);
-		push_back_2a(stack_a, stack_b);
-	}
+	push_all_2b(stack_a, stack_b);
+	push_back_2a(stack_a, stack_b);
 }

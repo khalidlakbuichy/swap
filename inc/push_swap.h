@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:21:56 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/18 10:10:33 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:19:22 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_check_args(int ac, char **av, t_stack *stack_a);
 bool	ft_stack_rpush(t_stack *stack, void *data);
 void	sa(t_stack *a);
 void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
 void	pa(t_stack *b, t_stack *a);
 void	pb(t_stack *a, t_stack *b);
 void	ra(t_stack *a);
@@ -54,5 +55,8 @@ int		ft_is_sorted(t_stack *stack_a);
 void	ft_qsort(int *arr, unsigned int size);
 int		ft_intcmp(void *ref, void *data);
 void	ft_small_sort(t_stack *stack_a);
+
+/* checker */
+char	*get_next_line(int fd);
 
 #endif

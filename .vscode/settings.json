@@ -5,6 +5,7 @@
         "stdbool.h": "c",
         "stdlib.h": "c",
         "ft_lst.h": "c",
-        "ft_stack.h": "c"
+        "ft_stack.h": "c",
+        "get_next_line.h": "c"
     }
 }
