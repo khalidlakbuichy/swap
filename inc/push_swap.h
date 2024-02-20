@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:21:56 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/20 10:57:15 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:38:21 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ typedef struct s_chunk
 }		t_chunk;
 
 /* Error handling */
-int		ft_atoi_enhanced(char *str);
+int		ft_atoi_enhanced(char *str, int *flag);
 void	ft_print_error(void);
-void	ft_check_args(int ac, char **av, t_stack *stack_a);
+void	ft_check_args(int ac, char **av, t_stack *a, t_stack *b);
+bool	ft_freestacks(t_stack *stack_a, t_stack *stack_b);
 
 /* operations */
 bool	ft_stack_rpush(t_stack *stack, void *data);

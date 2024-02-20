@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/20 11:07:24 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:09:24 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,11 @@ static void	push_back_2a(t_stack *stack_a, t_stack *stack_b)
 
 void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a->size <= 3)
+	if (stack_a->size == 3)
 		ft_small_sort(stack_a);
-	push_all_2b(stack_a, stack_b);
-	push_back_2a(stack_a, stack_b);
+	else
+	{
+		push_all_2b(stack_a, stack_b);
+		push_back_2a(stack_a, stack_b);
+	}
 }

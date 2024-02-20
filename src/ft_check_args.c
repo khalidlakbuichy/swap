@@ -6,23 +6,39 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/20 11:03:28 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:45:04 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void	push_nb_to_stack(t_stack *stack_a, int nb)
+static void	split_free(char **splited_str)
+{
+	int	i;
+
+	i = -1;
+	if (splited_str == NULL)
+		return ;
+	while (splited_str[++i] != NULL)
+		free(splited_str[i]);
+	free(splited_str);
+}
+
+static void	push_nb_to_stack(t_stack *a, t_stack *b, char **sp, int nb)
 {
 	int	*nbr;
 
-	if (ft_lstsearh_item(stack_a->top, &nb, ft_intcmp))
+	if (ft_lstsearh_item(a->top, &nb, ft_intcmp))
+	{
+		ft_freestacks(a, b);
+		split_free(sp);
 		ft_print_error();
+	}
 	nbr = (int *)malloc(sizeof(int));
 	if (nbr == NULL)
 		return ;
 	*nbr = nb;
-	ft_stack_rpush(stack_a, nbr);
+	ft_stack_rpush(a, nbr);
 }
 
 static void	ft_change_stack(t_stack *stack_a, int *arr)
@@ -73,37 +89,28 @@ static void	ft_make_table(t_stack *stack_a)
 	ft_change_stack(stack_a, arr);
 }
 
-static void	split_free(char **splited_str)
-{
-	int	i;
-
-	i = -1;
-	if (splited_str == NULL)
-		return ;
-	while (splited_str[++i] != NULL)
-		free(splited_str[i]);
-	free(splited_str);
-}
-
-void	ft_check_args(int ac, char **av, t_stack *stack_a)
+void	ft_check_args(int ac, char **av, t_stack *a, t_stack *b)
 {
 	int		i;
 	int		j;
-	char	**splited_av;
+	int		flag;
+	char	**sp;
 
 	i = 1;
 	while (i < ac)
 	{
 		if (av[i][0] == '\0')
 			ft_print_error();
-		splited_av = ft_split(av[i], ' ');
+		sp = ft_split(av[i], ' ');
 		j = 0;
-		if (splited_av[j] == NULL)
-			push_nb_to_stack(stack_a, ft_atoi_enhanced(av[i]));
-		while (splited_av[j] != NULL)
-			push_nb_to_stack(stack_a, ft_atoi_enhanced(splited_av[j++]));
-		split_free(splited_av);
+		if (sp[j] == NULL)
+			push_nb_to_stack(a, b, sp, ft_atoi_enhanced(av[i], &flag));
+		while (sp[j] != NULL)
+			push_nb_to_stack(a, b, sp, ft_atoi_enhanced(sp[j++], &flag));
+		split_free(sp);
+		if (flag == 1 && ft_freestacks(a, b))
+			ft_print_error();
 		i++;
 	}
-	ft_make_table(stack_a);
+	ft_make_table(a);
 }

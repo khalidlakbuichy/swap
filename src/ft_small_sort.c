@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:23:51 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/19 13:25:52 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:07:53 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	*get_max(t_stack *stack_a)
 
 void	ft_small_sort(t_stack *stack_a)
 {
-	void *max;
+	void	*max;
 
 	max = get_max(stack_a);
 	if (ft_intcmp(stack_a->top->content, max) == 0)

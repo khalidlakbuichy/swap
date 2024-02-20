@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:11:11 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/20 11:08:18 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:57:40 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@ int	ft_intcmp(void *ref, void *data)
 
 int	get_chunck_size(t_stack *stack_a)
 {
-	if (stack_a->size > 300)
+	if (stack_a->size > 100)
 		return (stack_a->size / 7);
-	else if (stack_a->size > 100)
-		return (stack_a->size / 5);
 	else if (stack_a->size > 3)
 		return (stack_a->size / 4);
 	else
-		return (stack_a->size);
+		return (1);
 }
 
 int	is_in_range(void *data, void *start, void *end)
