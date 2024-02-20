@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/19 11:23:17 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:21:04 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ static void	push_nb_to_stack(t_stack *stack_a, int nb)
 {
 	int	*nbr;
 
+	if (ft_lstsearh_item(stack_a->top, &nb, ft_intcmp))
+		ft_print_error();
 	nbr = (int *)malloc(sizeof(int));
 	if (nbr == NULL)
-	{
-		/* Do some error handling */
-	}
+		return ;
 	*nbr = nb;
-	// printf("nb: %d\n", *nbr);
 	ft_stack_rpush(stack_a, nbr);
 }
 
@@ -74,19 +73,9 @@ void	ft_check_args(int ac, char **av, t_stack *stack_a)
 		splited_av = ft_split(av[i], ' ');
 		j = 0;
 		if (splited_av[j] == NULL)
-		{
-			nb = ft_atoi_enhanced(av[i]);
-			if (ft_lstsearh_item(stack_a->top, &nb, ft_intcmp))
-				ft_print_error();
-			push_nb_to_stack(stack_a, nb);
-		}
+			push_nb_to_stack(stack_a, ft_atoi_enhanced(av[i]));
 		while (splited_av[j] != NULL)
-		{
-			nb = ft_atoi_enhanced(splited_av[j++]);
-			if (ft_lstsearh_item(stack_a->top, &nb, ft_intcmp))
-				ft_print_error();
-			push_nb_to_stack(stack_a, nb);
-		}
+			push_nb_to_stack(stack_a, ft_atoi_enhanced(splited_av[j++]));
 		split_free(splited_av);
 		i++;
 	}

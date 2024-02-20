@@ -6,45 +6,23 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/19 10:20:46 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:03:28 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_print_error(void)
-{
-	ft_putendl_fd("Error", STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
-
 static void	push_nb_to_stack(t_stack *stack_a, int nb)
 {
 	int	*nbr;
 
+	if (ft_lstsearh_item(stack_a->top, &nb, ft_intcmp))
+		ft_print_error();
 	nbr = (int *)malloc(sizeof(int));
 	if (nbr == NULL)
-	{
-		/* Do some error handling */
-	}
+		return ;
 	*nbr = nb;
-	// printf("nb: %d\n", *nbr);
 	ft_stack_rpush(stack_a, nbr);
-}
-
-int	ft_intcmp(void *ref, void *data)
-{
-	int	*nb_a;
-	int	*nb_b;
-
-	nb_a = ref;
-	nb_b = data;
-	if (*nb_a > *nb_b)
-		return (1);
-	else if (*nb_a < *nb_b)
-		return (-1);
-	else
-		return (0);
 }
 
 static void	ft_change_stack(t_stack *stack_a, int *arr)
@@ -80,7 +58,9 @@ static void	ft_make_table(t_stack *stack_a)
 	arr = (int *)malloc(sizeof(int) * (stack_a->size));
 	if (arr == NULL)
 	{
-		/* some error handling ;) */
+		ft_stack_clear(stack_a, free);
+		ft_putendl_fd("Memory allocation failed", STDERR_FILENO);
+		exit(EXIT_FAILURE);
 	}
 	i = 0;
 	while (head != NULL && (i < stack_a->size))
@@ -107,7 +87,6 @@ static void	split_free(char **splited_str)
 
 void	ft_check_args(int ac, char **av, t_stack *stack_a)
 {
-	int		nb;
 	int		i;
 	int		j;
 	char	**splited_av;
@@ -120,12 +99,7 @@ void	ft_check_args(int ac, char **av, t_stack *stack_a)
 		splited_av = ft_split(av[i], ' ');
 		j = 0;
 		if (splited_av[j] == NULL)
-		{
-			nb = ft_atoi_enhanced(av[i]);
-			if (ft_lstsearh_item(stack_a->top, &nb, ft_intcmp))
-				ft_print_error();
-			push_nb_to_stack(stack_a, nb);
-		}
+			push_nb_to_stack(stack_a, ft_atoi_enhanced(av[i]));
 		while (splited_av[j] != NULL)
 			push_nb_to_stack(stack_a, ft_atoi_enhanced(splited_av[j++]));
 		split_free(splited_av);

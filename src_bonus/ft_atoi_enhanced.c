@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_enhanced.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:11:04 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/12 15:14:50 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:15:28 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	ft_atoi_enhanced(char *str)
 
 	signe = 1;
 	nb = 0;
-	
 	while (is_white(*str))
 		str++;
 	if (*str == '-')

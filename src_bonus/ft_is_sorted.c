@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:23:47 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/19 12:05:56 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:22:26 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_is_sorted(t_stack *stack_a)
 {
-	t_list *head;
+	t_list	*head;
 
 	head = stack_a->top;
 	while (head->next != NULL)

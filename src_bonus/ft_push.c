@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:15:02 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/19 11:32:30 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:23:23 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static void	ft_push(t_stack *stack_a, t_stack *stack_b)
 	ft_stack_pop(stack_a, fake_free);
 }
 
-void pa(t_stack *b, t_stack *a)
+void	pa(t_stack *b, t_stack *a)
 {
-    ft_push(b, a);
+	ft_push(b, a);
 }
 
-void pb(t_stack *a, t_stack *b)
+void	pb(t_stack *a, t_stack *b)
 {
-    ft_push(a, b);
+	ft_push(a, b);
 }

@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:21:56 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/19 11:19:22 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:57:15 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 
 /* Sorting algorithm */
+int		get_chunck_size(t_stack *stack_a);
+int		is_in_range(void *data, void *start, void *end);
+void	put_top_push(t_stack *stack_a, t_stack *stack_b, int i, t_chunk *chunk);
 void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b);
 int		ft_is_sorted(t_stack *stack_a);
 void	ft_qsort(int *arr, unsigned int size);
