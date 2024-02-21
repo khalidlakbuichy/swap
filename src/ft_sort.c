@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/21 13:38:53 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:43:57 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,36 @@ static void	push_all_2b(t_stack *a, t_stack *b)
 static void	push_back_2a(t_stack *a, t_stack *b)
 {
 	t_list	*head;
+	int		nb2;
 	int		nb;
 	int		i;
 
-	nb = b->size + 1;
-	while (--nb > 0)
+	nb = b->size;
+	nb2 = nb - 1;
+	while (nb > 0)
 	{
 		i = -1;
 		head = b->top;
 		while (head != NULL && ++i >= 0)
 		{
-			if (ft_intcmp(head->content, &nb) == 0)
+			if (ft_intcmp(head->content, &nb) == 0 || ft_intcmp(head->content, &nb2) == 0)
 			{
 				if (i >= (b->size / 2))
-					while (ft_intcmp(b->top->content, &nb) != 0)
+					while (ft_intcmp(b->top->content, &nb) != 0 && ft_intcmp(b->top->content, &nb2) != 0)
 						rrb(b);
 				else
-					while (ft_intcmp(b->top->content, &nb) != 0)
+					while (ft_intcmp(b->top->content, &nb) != 0 && ft_intcmp(b->top->content, &nb2) != 0)
 						rb(b);
 				pa(b, a);
+				if (a->size % 2 == 0)
+				{
+					nb -= 2;
+					nb2 = nb - 1;
+				}
+				if (a->top->next && ft_intcmp(a->top->content, a->top->next->content) > 0)
+				{
+					sa(a);
+				}
 				break ;
 			}
 			head = head->next;
