@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:07:36 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/19 13:21:53 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:32:46 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,27 @@ static void	ft_do_operations(t_stack *a, t_stack *b, char *str)
 
 int	main(int ac, char **av)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	*a;
+	t_stack	*b;
 	char	*str;
 
 	if (ac == 1)
 		return (EXIT_FAILURE);
-	stack_a = ft_stack_create();
-	stack_b = ft_stack_create();
-	ft_check_args(ac, av, stack_a);
-	ft_lstiter(stack_a->top, ft_print);
+	a = ft_stack_create();
+	b = ft_stack_create();
+	ft_check_args(ac, av, a, b);
+	ft_lstiter(a->top, ft_print);
 	str = get_next_line(STDIN_FILENO);
 	while (str != NULL)
 	{
-		ft_do_operations(stack_a, stack_b, str);
+		ft_do_operations(a, b, str);
 		free(str);
 		str = get_next_line(STDIN_FILENO);
 	}
-	if (stack_b->size == 0 && ft_is_sorted(stack_a) == 1)
+	if (b->size == 0 && ft_is_sorted(a) == 1)
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 		ft_putendl_fd("KO", STDOUT_FILENO);
-	ft_stack_clear(stack_a, free);
-	ft_stack_clear(stack_b, free);
+	ft_stack_clear(a, free);
+	ft_stack_clear(b, free);
 }

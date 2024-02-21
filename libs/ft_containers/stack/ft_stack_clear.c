@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:39:37 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/20 10:04:03 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:40:37 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ bool	ft_stack_clear(t_stack *stack, void (*del)(void *))
 	ft_lstclear(&stack->top, del);
 	free(stack);
 	stack = NULL;
-	return(true);
+	return (true);
 }

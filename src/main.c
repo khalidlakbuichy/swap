@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:42:42 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/20 16:21:25 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:44:25 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,31 @@ void	ft_print_error(void)
 	exit(EXIT_FAILURE);
 }
 
-bool	ft_freestacks(t_stack *stack_a, t_stack *stack_b)
+bool	ft_freestacks(t_stack *a, t_stack *b)
 {
-	bool feedback;
-	feedback = ft_stack_clear(stack_a, free);
-	feedback = ft_stack_clear(stack_b, free);
+	bool	feedback;
+
+	feedback = ft_stack_clear(a, free);
+	feedback = ft_stack_clear(b, free);
 	return (feedback);
 }
 
-void ft_print(void *data)
-{
-	int *nb;
-
-	nb = data;
-	printf("%d\n", *nb);
-}
 int	main(int ac, char **av)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	*a;
+	t_stack	*b;
 
 	if (ac == 1)
-		ft_print_error();
-	stack_a = ft_stack_create();
-	stack_b = ft_stack_create();
-	ft_check_args(ac, av, stack_a, stack_b);
-	if (ft_is_sorted(stack_a))
+		return (EXIT_SUCCESS);
+	a = ft_stack_create();
+	b = ft_stack_create();
+	ft_check_args(ac, av, a, b);
+	if (ft_is_sorted(a))
 	{
-		ft_freestacks(stack_a, stack_b);
+		ft_freestacks(a, b);
 		return (EXIT_SUCCESS);
 	}
-	ft_sort_stack(stack_a, stack_b);
-	ft_stack_clear(stack_a, free);
-	ft_stack_clear(stack_b, free);
+	ft_sort_stack(a, b);
+	ft_stack_clear(a, free);
+	ft_stack_clear(b, free);
 }

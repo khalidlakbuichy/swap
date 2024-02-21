@@ -6,47 +6,46 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/20 15:55:14 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:38:53 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void	update_chunk(t_chunk *chunk, t_stack *stack_a)
+static void	update_chunk(t_chunk *chunk, t_stack *a)
 {
 	chunk->start = chunk->end + 1;
-	chunk->end += get_chunck_size(stack_a);
+	chunk->end += get_chunck_size(a);
 	if (chunk->end > chunk->max)
 		chunk->end = chunk->max;
 	chunk->mid = (chunk->end + chunk->start) / 2;
 }
 
-static void	setup_chunk(t_chunk *chunk, t_stack *stack_a)
+static void	setup_chunk(t_chunk *chunk, t_stack *a)
 {
 	chunk->start = 1;
-	chunk->end = get_chunck_size(stack_a);
+	chunk->end = get_chunck_size(a);
 	chunk->mid = chunk->end / 2;
-	chunk->max = stack_a->size;
+	chunk->max = a->size;
 }
 
-static void	push_all_2b(t_stack *stack_a, t_stack *stack_b)
+static void	push_all_2b(t_stack *a, t_stack *b)
 {
 	t_chunk	chunk;
 	t_list	*head;
 	int		i;
 
-	setup_chunk(&chunk, stack_a);
-	while (stack_a->size > 0)
+	setup_chunk(&chunk, a);
+	while (a->size > 0)
 	{
-		head = stack_a->top;
+		head = a->top;
 		i = 0;
-		while (head != NULL && stack_b->size < chunk.end)
+		while (head != NULL && b->size < chunk.end)
 		{
 			if (is_in_range(head->content, &chunk.start, &chunk.end))
 			{
-				put_top_push(stack_a, stack_b, i, &chunk);
-				head = stack_a->top;
-				i = 0;
+				put_top_push(a, b, i, &chunk);
+				break ;
 			}
 			else
 			{
@@ -54,50 +53,49 @@ static void	push_all_2b(t_stack *stack_a, t_stack *stack_b)
 				i++;
 			}
 		}
-		if (stack_b->size == chunk.end)
-			update_chunk(&chunk, stack_a);
+		if (b->size == chunk.end)
+			update_chunk(&chunk, a);
 	}
 }
 
-static void	push_back_2a(t_stack *stack_a, t_stack *stack_b)
+static void	push_back_2a(t_stack *a, t_stack *b)
 {
 	t_list	*head;
 	int		nb;
 	int		i;
 
-	nb = stack_b->size + 1;
+	nb = b->size + 1;
 	while (--nb > 0)
 	{
-		i = 0;
-		head = stack_b->top;
-		while (head != NULL)
+		i = -1;
+		head = b->top;
+		while (head != NULL && ++i >= 0)
 		{
 			if (ft_intcmp(head->content, &nb) == 0)
 			{
-				if (i >= (stack_b->size / 2))
-					while (ft_intcmp(stack_b->top->content, &nb) != 0)
-						rrb(stack_b);
+				if (i >= (b->size / 2))
+					while (ft_intcmp(b->top->content, &nb) != 0)
+						rrb(b);
 				else
-					while (ft_intcmp(stack_b->top->content, &nb) != 0)
-						rb(stack_b);
-				pa(stack_b, stack_a);
+					while (ft_intcmp(b->top->content, &nb) != 0)
+						rb(b);
+				pa(b, a);
 				break ;
 			}
 			head = head->next;
-			i++;
 		}
 	}
 }
 
-void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b)
+void	ft_sort_stack(t_stack *a, t_stack *b)
 {
-	if (stack_a->size <= 3)
-		ft_sort_three(stack_a);
-	else if (stack_a->size < 6)
-		ft_sort_five(stack_a, stack_b);
+	if (a->size <= 3)
+		ft_sort_three(a);
+	else if (a->size < 6)
+		ft_sort_five(a, b);
 	else
 	{
-		push_all_2b(stack_a, stack_b);
-		push_back_2a(stack_a, stack_b);
+		push_all_2b(a, b);
+		push_back_2a(a, b);
 	}
 }

@@ -6,7 +6,7 @@
 #    By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/11 12:59:23 by klakbuic          #+#    #+#              #
-#    Updated: 2024/02/20 11:29:07 by klakbuic         ###   ########.fr        #
+#    Updated: 2024/02/21 13:17:00 by klakbuic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BONUS   = checker
 HEADER  = ../inc/push_swap.h
 
 CC       = cc
-CFLAGS   = -Wall -Wextra #-g -fsanitize=address #-Werror
+CFLAGS   = -Wall -Wextra -g -fsanitize=address #-Werror
 
 LIB      = libs/libft/libft.a libs/ft_containers/containersft.a
 

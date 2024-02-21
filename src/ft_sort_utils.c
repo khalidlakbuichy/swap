@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:11:11 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/20 14:57:40 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:34:55 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,18 @@ int	ft_intcmp(void *ref, void *data)
 		return (0);
 }
 
-int	get_chunck_size(t_stack *stack_a)
+int	get_chunck_size(t_stack *a)
 {
-	if (stack_a->size > 100)
-		return (stack_a->size / 7);
-	else if (stack_a->size > 3)
-		return (stack_a->size / 4);
+	if (a->size > 300)
+		return (a->size / 6);
+	else if (a->size > 200)
+		return (a->size / 5);
+	else if (a->size > 100)
+		return (a->size / 4);
+	else if (a->size > 3)
+		return (a->size / 3);
 	else
-		return (1);
+		return (a->size);
 }
 
 int	is_in_range(void *data, void *start, void *end)
@@ -42,32 +46,31 @@ int	is_in_range(void *data, void *start, void *end)
 	return (ft_intcmp(data, start) >= 0 && ft_intcmp(data, end) <= 0);
 }
 
-void	put_top_push(t_stack *stack_a, t_stack *stack_b, int i, t_chunk *chunk)
+void	put_top_push(t_stack *a, t_stack *b, int i, t_chunk *chunk)
 {
-	if (i >= (stack_a->size / 2))
+	if (i >= (a->size / 2))
 	{
-		while (!is_in_range(stack_a->top->content, &chunk->start, &chunk->end))
-			rra(stack_a);
+		while (!is_in_range(a->top->content, &chunk->start, &chunk->end))
+			rra(a);
 	}
 	else
 	{
-		while (!is_in_range(stack_a->top->content, &chunk->start, &chunk->end))
+		while (!is_in_range(a->top->content, &chunk->start, &chunk->end))
 		{
-			if (stack_b->top && ft_intcmp(stack_b->top->content,
-					&chunk->mid) >= 0)
-				rr(stack_a, stack_b);
+			if (b->top && ft_intcmp(b->top->content, &chunk->mid) >= 0)
+				rr(a, b);
 			else
-				ra(stack_a);
+				ra(a);
 		}
 	}
-	pb(stack_a, stack_b);
+	pb(a, b);
 }
 
-int	ft_is_sorted(t_stack *stack_a)
+int	ft_is_sorted(t_stack *a)
 {
 	t_list	*head;
 
-	head = stack_a->top;
+	head = a->top;
 	while (head->next != NULL)
 	{
 		if (ft_intcmp(head->content, (head->next)->content) > 0)

@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:21:56 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/20 16:00:49 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:43:03 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_chunk
 int		ft_atoi_enhanced(char *str, int *flag);
 void	ft_print_error(void);
 void	ft_check_args(int ac, char **av, t_stack *a, t_stack *b);
-bool	ft_freestacks(t_stack *stack_a, t_stack *stack_b);
+bool	ft_freestacks(t_stack *a, t_stack *b);
 
 /* operations */
 bool	ft_stack_rpush(t_stack *stack, void *data);
@@ -51,15 +51,15 @@ void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 
 /* Sorting algorithm */
-int		get_chunck_size(t_stack *stack_a);
+int		get_chunck_size(t_stack *a);
 int		is_in_range(void *data, void *start, void *end);
-void	put_top_push(t_stack *stack_a, t_stack *stack_b, int i, t_chunk *chunk);
-void	ft_sort_stack(t_stack *stack_a, t_stack *stack_b);
-int		ft_is_sorted(t_stack *stack_a);
+void	put_top_push(t_stack *a, t_stack *b, int i, t_chunk *chunk);
+void	ft_sort_stack(t_stack *a, t_stack *b);
+int		ft_is_sorted(t_stack *a);
 void	ft_qsort(int *arr, unsigned int size);
 int		ft_intcmp(void *ref, void *data);
-void	ft_sort_three(t_stack *stack_a);
-void	ft_sort_five(t_stack *stack_a, t_stack *stack_b);
+void	ft_sort_three(t_stack *a);
+void	ft_sort_five(t_stack *a, t_stack *b);
 
 /* checker */
 char	*get_next_line(int fd);

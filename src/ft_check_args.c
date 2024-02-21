@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/20 11:45:04 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:43:08 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ static void	push_nb_to_stack(t_stack *a, t_stack *b, char **sp, int nb)
 	ft_stack_rpush(a, nbr);
 }
 
-static void	ft_change_stack(t_stack *stack_a, int *arr)
+static void	ft_change_stack(t_stack *a, int *arr)
 {
 	int		i;
 	int		*nb;
 	t_list	*head;
 
 	i = 0;
-	head = stack_a->top;
-	while ((head != NULL) && (i < stack_a->size))
+	head = a->top;
+	while ((head != NULL) && (i < a->size))
 	{
 		if (ft_intcmp(head->content, (arr + i)) == 0)
 		{
@@ -63,30 +63,30 @@ static void	ft_change_stack(t_stack *stack_a, int *arr)
 	free(arr);
 }
 
-static void	ft_make_table(t_stack *stack_a)
+static void	ft_make_table(t_stack *a)
 {
 	t_list	*head;
 	int		*arr;
 	int		i;
 	int		*tmp;
 
-	head = stack_a->top;
-	arr = (int *)malloc(sizeof(int) * (stack_a->size));
+	head = a->top;
+	arr = (int *)malloc(sizeof(int) * (a->size));
 	if (arr == NULL)
 	{
-		ft_stack_clear(stack_a, free);
+		ft_stack_clear(a, free);
 		ft_putendl_fd("Memory allocation failed", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	i = 0;
-	while (head != NULL && (i < stack_a->size))
+	while (head != NULL && (i < a->size))
 	{
 		tmp = head->content;
 		arr[i++] = *tmp;
 		head = head->next;
 	}
-	ft_qsort(arr, stack_a->size);
-	ft_change_stack(stack_a, arr);
+	ft_qsort(arr, a->size);
+	ft_change_stack(a, arr);
 }
 
 void	ft_check_args(int ac, char **av, t_stack *a, t_stack *b)
@@ -96,8 +96,8 @@ void	ft_check_args(int ac, char **av, t_stack *a, t_stack *b)
 	int		flag;
 	char	**sp;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (++i < ac)
 	{
 		if (av[i][0] == '\0')
 			ft_print_error();
@@ -110,7 +110,6 @@ void	ft_check_args(int ac, char **av, t_stack *a, t_stack *b)
 		split_free(sp);
 		if (flag == 1 && ft_freestacks(a, b))
 			ft_print_error();
-		i++;
 	}
 	ft_make_table(a);
 }

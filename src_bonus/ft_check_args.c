@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/19 13:21:04 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/21 11:38:12 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	ft_print_error(void)
 	exit(EXIT_FAILURE);
 }
 
-static void	push_nb_to_stack(t_stack *stack_a, int nb)
+static void	push_nb_to_stack(t_stack *a, int nb)
 {
 	int	*nbr;
 
-	if (ft_lstsearh_item(stack_a->top, &nb, ft_intcmp))
+	if (ft_lstsearh_item(a->top, &nb, ft_intcmp))
 		ft_print_error();
 	nbr = (int *)malloc(sizeof(int));
 	if (nbr == NULL)
 		return ;
 	*nbr = nb;
-	ft_stack_rpush(stack_a, nbr);
+	ft_stack_rpush(a, nbr);
 }
 
 int	ft_intcmp(void *ref, void *data)
@@ -58,7 +58,7 @@ static void	split_free(char **splited_str)
 	free(splited_str);
 }
 
-void	ft_check_args(int ac, char **av, t_stack *stack_a)
+void	ft_check_args(int ac, char **av, t_stack *a)
 {
 	int		nb;
 	int		i;
@@ -73,9 +73,9 @@ void	ft_check_args(int ac, char **av, t_stack *stack_a)
 		splited_av = ft_split(av[i], ' ');
 		j = 0;
 		if (splited_av[j] == NULL)
-			push_nb_to_stack(stack_a, ft_atoi_enhanced(av[i]));
+			push_nb_to_stack(a, ft_atoi_enhanced(av[i]));
 		while (splited_av[j] != NULL)
-			push_nb_to_stack(stack_a, ft_atoi_enhanced(splited_av[j++]));
+			push_nb_to_stack(a, ft_atoi_enhanced(splited_av[j++]));
 		split_free(splited_av);
 		i++;
 	}

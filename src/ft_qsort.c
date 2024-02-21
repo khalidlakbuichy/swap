@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_qsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 12:47:48 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/12 13:30:02 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:39:39 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static void	quick_sort(int *arr, int start, int end)
 
 void	ft_qsort(int *arr, unsigned int size)
 {
-	unsigned int start;
-	unsigned int end;
+	unsigned int	start;
+	unsigned int	end;
 
 	start = 0;
 	end = size - 1;
