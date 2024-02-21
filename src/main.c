@@ -6,18 +6,12 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:42:42 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/20 15:40:01 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:21:25 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-void ft_print(void *data)
-{
-	int *nb;
 
-	nb = data;
-	printf("%d\n", *nb);
-}
 void	ft_print_error(void)
 {
 	ft_putendl_fd("Error", STDERR_FILENO);
@@ -32,6 +26,13 @@ bool	ft_freestacks(t_stack *stack_a, t_stack *stack_b)
 	return (feedback);
 }
 
+void ft_print(void *data)
+{
+	int *nb;
+
+	nb = data;
+	printf("%d\n", *nb);
+}
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;

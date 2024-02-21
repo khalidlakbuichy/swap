@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:23:51 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/20 15:53:17 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:21:12 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	*get_min(t_stack *stack_a)
 	}
 	return (min);
 }
+
 static void	push_min_2b(t_stack *stack_a, t_stack *stack_b)
 {
 	t_list	*head;
@@ -67,7 +68,7 @@ static void	push_min_2b(t_stack *stack_a, t_stack *stack_b)
 	i = 0;
 	while (head != NULL)
 	{
-		if (ft_intcmp(stack_a->top->content, min) == 0)
+		if (ft_intcmp(head->content, min) == 0)
 		{
 			if (i > (stack_a->size / 2))
 				while (ft_intcmp(stack_a->top->content, min) != 0)
@@ -76,12 +77,10 @@ static void	push_min_2b(t_stack *stack_a, t_stack *stack_b)
 				while (ft_intcmp(stack_a->top->content, min) != 0)
 					ra(stack_a);
 			pb(stack_a, stack_b);
+			return ;
 		}
-		else
-		{
-			head = head->next;
-			i++;
-		}
+		head = head->next;
+		i++;
 	}
 }
 
@@ -90,6 +89,6 @@ void	ft_sort_five(t_stack *stack_a, t_stack *stack_b)
 	push_min_2b(stack_a, stack_b);
 	push_min_2b(stack_a, stack_b);
 	ft_sort_three(stack_a);
-	pa(stack_b, stack_b);
+	pa(stack_b, stack_a);
 	pa(stack_b, stack_a);
 }
