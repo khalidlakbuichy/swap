@@ -6,13 +6,13 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:11:11 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/21 16:47:08 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/22 09:48:30 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int	ft_intcmp(void *ref, void *data)
+int	cmp(void *ref, void *data)
 {
 	int	*nb_a;
 	int	*nb_b;
@@ -39,7 +39,7 @@ int	get_chunck_size(t_stack *a)
 
 int	is_in_range(void *data, void *start, void *end)
 {
-	return (ft_intcmp(data, start) >= 0 && ft_intcmp(data, end) <= 0);
+	return (cmp(data, start) >= 0 && cmp(data, end) <= 0);
 }
 
 void	put_top_push(t_stack *a, t_stack *b, int i, t_chunk *chunk)
@@ -53,7 +53,7 @@ void	put_top_push(t_stack *a, t_stack *b, int i, t_chunk *chunk)
 	{
 		while (!is_in_range(a->top->content, &chunk->start, &chunk->end))
 		{
-			if (b->top && ft_intcmp(b->top->content, &chunk->mid) >= 0)
+			if (b->top && cmp(b->top->content, &chunk->mid) >= 0)
 				rr(a, b);
 			else
 				ra(a);
@@ -69,7 +69,7 @@ int	ft_is_sorted(t_stack *a)
 	head = a->top;
 	while (head->next != NULL)
 	{
-		if (ft_intcmp(head->content, (head->next)->content) > 0)
+		if (cmp(head->content, (head->next)->content) > 0)
 			return (0);
 		head = head->next;
 	}

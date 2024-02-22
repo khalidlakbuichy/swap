@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/21 14:43:08 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/22 09:48:30 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	push_nb_to_stack(t_stack *a, t_stack *b, char **sp, int nb)
 {
 	int	*nbr;
 
-	if (ft_lstsearh_item(a->top, &nb, ft_intcmp))
+	if (ft_lstsearh_item(a->top, &nb, cmp))
 	{
 		ft_freestacks(a, b);
 		split_free(sp);
@@ -51,7 +51,7 @@ static void	ft_change_stack(t_stack *a, int *arr)
 	head = a->top;
 	while ((head != NULL) && (i < a->size))
 	{
-		if (ft_intcmp(head->content, (arr + i)) == 0)
+		if (cmp(head->content, (arr + i)) == 0)
 		{
 			nb = head->content;
 			*nb = (i + 1);

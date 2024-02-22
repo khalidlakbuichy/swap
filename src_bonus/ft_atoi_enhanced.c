@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:11:04 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/19 13:15:28 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:06:07 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@ static int	check_int_overflow(char *nbr, int signe)
 	return (1);
 }
 
-int	ft_atoi_enhanced(char *str)
+int	ft_atoi_enhanced(char *str, int *flag)
 {
 	int				signe;
 	unsigned int	nb;
 
 	signe = 1;
 	nb = 0;
+	*flag = 0;
 	while (is_white(*str))
 		str++;
 	if (*str == '-')
@@ -55,13 +56,13 @@ int	ft_atoi_enhanced(char *str)
 	if (*str == '-' || *str == '+')
 		str++;
 	if (check_int_overflow(str, signe))
-		ft_print_error();
+		return ((*flag = 1), 0);
 	while (*str != '\0')
 	{
 		if (ft_isdigit(*str))
 			nb = (nb * 10) + ((*str - '0'));
 		else
-			ft_print_error();
+			return ((*flag = 1), 0);
 		str++;
 	}
 	return ((int)nb * signe);

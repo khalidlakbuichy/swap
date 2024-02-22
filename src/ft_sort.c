@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 08:51:23 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/21 16:43:57 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:30:17 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,24 +73,10 @@ static void	push_back_2a(t_stack *a, t_stack *b)
 		head = b->top;
 		while (head != NULL && ++i >= 0)
 		{
-			if (ft_intcmp(head->content, &nb) == 0 || ft_intcmp(head->content, &nb2) == 0)
+			if (cmp(head->content, &nb) == 0 || cmp(head->content, &nb2) == 0)
 			{
-				if (i >= (b->size / 2))
-					while (ft_intcmp(b->top->content, &nb) != 0 && ft_intcmp(b->top->content, &nb2) != 0)
-						rrb(b);
-				else
-					while (ft_intcmp(b->top->content, &nb) != 0 && ft_intcmp(b->top->content, &nb2) != 0)
-						rb(b);
-				pa(b, a);
-				if (a->size % 2 == 0)
-				{
-					nb -= 2;
-					nb2 = nb - 1;
-				}
-				if (a->top->next && ft_intcmp(a->top->content, a->top->next->content) > 0)
-				{
-					sa(a);
-				}
+				put_elem_top(b, i, &nb, &nb2);
+				put_elem_2a(a, b, &nb, &nb2);
 				break ;
 			}
 			head = head->next;

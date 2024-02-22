@@ -6,18 +6,39 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:07:36 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/02/21 14:32:46 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:13:52 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	ft_print(void *data)
-{
-	int	*nb;
+// void	ft_print(void *data)
+// {
+// 	int	*nb;
 
-	nb = data;
-	printf("%d\n", *nb);
+// 	nb = data;
+// 	printf("%d\n", *nb);
+// }
+void	ft_print_error(void)
+{
+	ft_putendl_fd("Error", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
+
+bool	ft_freestacks(t_stack *a, t_stack *b)
+{
+	bool	feedback;
+
+	feedback = ft_stack_clear(a, free);
+	feedback = ft_stack_clear(b, free);
+	return (feedback);
+}
+
+static void	free_bye(t_stack *a, t_stack *b, char *str)
+{
+	ft_freestacks(a, b);
+	free(str);
+	ft_print_error();
 }
 
 static void	ft_do_operations(t_stack *a, t_stack *b, char *str)
@@ -45,7 +66,7 @@ static void	ft_do_operations(t_stack *a, t_stack *b, char *str)
 	else if (ft_strncmp(str, "rrr\n", ft_strlen(str)) == 0)
 		rrr(a, b);
 	else
-		ft_print_error();
+		free_bye(a, b, str);
 }
 
 int	main(int ac, char **av)
@@ -59,7 +80,6 @@ int	main(int ac, char **av)
 	a = ft_stack_create();
 	b = ft_stack_create();
 	ft_check_args(ac, av, a, b);
-	ft_lstiter(a->top, ft_print);
 	str = get_next_line(STDIN_FILENO);
 	while (str != NULL)
 	{

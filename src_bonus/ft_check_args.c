@@ -6,45 +6,11 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:26:48 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/21 11:38:12 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:32:01 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
-
-void	ft_print_error(void)
-{
-	ft_putendl_fd("Error", STDERR_FILENO);
-	exit(EXIT_FAILURE);
-}
-
-static void	push_nb_to_stack(t_stack *a, int nb)
-{
-	int	*nbr;
-
-	if (ft_lstsearh_item(a->top, &nb, ft_intcmp))
-		ft_print_error();
-	nbr = (int *)malloc(sizeof(int));
-	if (nbr == NULL)
-		return ;
-	*nbr = nb;
-	ft_stack_rpush(a, nbr);
-}
-
-int	ft_intcmp(void *ref, void *data)
-{
-	int	*nb_a;
-	int	*nb_b;
-
-	nb_a = ref;
-	nb_b = data;
-	if (*nb_a > *nb_b)
-		return (1);
-	else if (*nb_a < *nb_b)
-		return (-1);
-	else
-		return (0);
-}
 
 static void	split_free(char **splited_str)
 {
@@ -58,25 +24,43 @@ static void	split_free(char **splited_str)
 	free(splited_str);
 }
 
-void	ft_check_args(int ac, char **av, t_stack *a)
+static void	push_nb_to_stack(t_stack *a, t_stack *b, char **sp, int nb)
 {
-	int		nb;
+	int	*nbr;
+
+	if (ft_lstsearh_item(a->top, &nb, cmp))
+	{
+		ft_freestacks(a, b);
+		split_free(sp);
+		ft_print_error();
+	}
+	nbr = (int *)malloc(sizeof(int));
+	if (nbr == NULL)
+		return ;
+	*nbr = nb;
+	ft_stack_rpush(a, nbr);
+}
+
+void	ft_check_args(int ac, char **av, t_stack *a, t_stack *b)
+{
 	int		i;
 	int		j;
-	char	**splited_av;
+	int		flag;
+	char	**sp;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (++i < ac)
 	{
 		if (av[i][0] == '\0')
 			ft_print_error();
-		splited_av = ft_split(av[i], ' ');
+		sp = ft_split(av[i], ' ');
 		j = 0;
-		if (splited_av[j] == NULL)
-			push_nb_to_stack(a, ft_atoi_enhanced(av[i]));
-		while (splited_av[j] != NULL)
-			push_nb_to_stack(a, ft_atoi_enhanced(splited_av[j++]));
-		split_free(splited_av);
-		i++;
+		if (sp[j] == NULL)
+			push_nb_to_stack(a, b, sp, ft_atoi_enhanced(av[i], &flag));
+		while (sp[j] != NULL)
+			push_nb_to_stack(a, b, sp, ft_atoi_enhanced(sp[j++], &flag));
+		split_free(sp);
+		if (flag == 1 && ft_freestacks(a, b))
+			ft_print_error();
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: klakbuic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 13:23:51 by khalid            #+#    #+#             */
-/*   Updated: 2024/02/21 11:38:41 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/02/22 09:48:30 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	*get_max(t_stack *a)
 	max = head->content;
 	while (head != NULL)
 	{
-		if (ft_intcmp(head->content, max) > 0)
+		if (cmp(head->content, max) > 0)
 			max = head->content;
 		head = head->next;
 	}
@@ -33,11 +33,11 @@ void	ft_sort_three(t_stack *a)
 	void	*max;
 
 	max = get_max(a);
-	if (ft_intcmp(a->top->content, max) == 0)
+	if (cmp(a->top->content, max) == 0)
 		ra(a);
-	else if (ft_intcmp(a->top->next->content, max) == 0)
+	else if (cmp(a->top->next->content, max) == 0)
 		rra(a);
-	if (ft_intcmp(a->top->content, a->top->next->content) > 0)
+	if (cmp(a->top->content, a->top->next->content) > 0)
 		sa(a);
 }
 
@@ -50,7 +50,7 @@ static void	*get_min(t_stack *a)
 	min = head->content;
 	while (head != NULL)
 	{
-		if (ft_intcmp(head->content, min) < 0)
+		if (cmp(head->content, min) < 0)
 			min = head->content;
 		head = head->next;
 	}
@@ -68,13 +68,13 @@ static void	push_min_2b(t_stack *a, t_stack *b)
 	i = 0;
 	while (head != NULL)
 	{
-		if (ft_intcmp(head->content, min) == 0)
+		if (cmp(head->content, min) == 0)
 		{
 			if (i > (a->size / 2))
-				while (ft_intcmp(a->top->content, min) != 0)
+				while (cmp(a->top->content, min) != 0)
 					rra(a);
 			else
-				while (ft_intcmp(a->top->content, min) != 0)
+				while (cmp(a->top->content, min) != 0)
 					ra(a);
 			pb(a, b);
 			return ;
